@@ -56,8 +56,6 @@ const CustomTable = () => {
   const handleDelete = (tableID) => {
     const newData = data.filter((item) => item.tableID !== tableID);
     setData(newData);
-    console.log(newData, "data incoming", tableID, "tableID incoming");
-    console.log(newData, "new data incoming");
   };
   // function sortDataByGroup(tableID) {
   //   const newData = [...originData].sort((a, b) => a.name.localeCompare(b.name));
@@ -161,7 +159,6 @@ const CustomTable = () => {
     if (!col.editable) {
       return col;
     }
-    console.log(col, "<==== col");
     return {
       ...col,
       onCell: (record) => ({
@@ -175,7 +172,6 @@ const CustomTable = () => {
   });
 
   const onChange = (pagination, filters, sorter, extra) => {
-    console.log(columns, "<===");
     let names = data.map((item, index) => {
       return item[sorter.field];
     });
@@ -191,7 +187,6 @@ const CustomTable = () => {
       }
     }
     setData(datam);
-    console.log(datam, "<=== final data");
   };
   return (
     <Form form={form} component={false}>

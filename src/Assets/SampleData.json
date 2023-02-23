@@ -1,0 +1,386 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "category": {
+        "id": 1,
+        "name": "CM"
+      },
+      "itemType": {
+        "id": 1,
+        "name": "CM"
+      },
+      "manufacturer": {
+        "id": 5,
+        "name": "Intel"
+      },
+      "count": 6,
+      "partNumber": "WCS GEN5",
+      "size": null,
+      "speed": null,
+      "location": "CA5222"
+    },
+    {
+      "id": 2,
+      "category": {
+        "id": 2,
+        "name": "Controller"
+      },
+      "itemType": {
+        "id": 2,
+        "name": "Controller"
+      },
+      "manufacturer": {
+        "id": 2,
+        "name": "Broadcom"
+      },
+      "count": 3,
+      "partNumber": "9400-16i",
+      "size": null,
+      "speed": null,
+      "location": "D.1.2"
+    },
+    {
+      "id": 3,
+      "category": {
+        "id": 2,
+        "name": "Controller"
+      },
+      "itemType": {
+        "id": 2,
+        "name": "Controller"
+      },
+      "manufacturer": {
+        "id": 2,
+        "name": "Broadcom"
+      },
+      "count": 16,
+      "partNumber": "9500-16i",
+      "size": null,
+      "speed": null,
+      "location": "CBT"
+    },
+    {
+      "id": 4,
+      "category": {
+        "id": 3,
+        "name": "CPU"
+      },
+      "itemType": {
+        "id": 3,
+        "name": "CPU"
+      },
+      "manufacturer": {
+        "id": 5,
+        "name": "Intel"
+      },
+      "count": 10,
+      "partNumber": "Intel CPU 2.00 G",
+      "size": null,
+      "speed": null,
+      "location": "D.1.2"
+    },
+    {
+      "id": 5,
+      "category": {
+        "id": 3,
+        "name": "CPU"
+      },
+      "itemType": {
+        "id": 3,
+        "name": "CPU"
+      },
+      "manufacturer": {
+        "id": 5,
+        "name": "Intel"
+      },
+      "count": 2,
+      "partNumber": "Intel CPU 2.10 G",
+      "size": null,
+      "speed": null,
+      "location": "D.1.2"
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "CM",
+      "itemTypes": [
+        {
+          "id": 1,
+          "name": "CM"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Controller",
+      "itemTypes": [
+        {
+          "id": 2,
+          "name": "Controller"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "CPU",
+      "itemTypes": [
+        {
+          "id": 3,
+          "name": "CPU"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "FPGA",
+      "itemTypes": [
+        {
+          "id": 4,
+          "name": "Celestial Peak"
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Hard Drive",
+      "itemTypes": [
+        {
+          "id": 5,
+          "name": "NVMe"
+        },
+        {
+          "id": 6,
+          "name": "SAS"
+        },
+        {
+          "id": 7,
+          "name": "SATA"
+        },
+        {
+          "id": 8,
+          "name": "SSD"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Memory Module",
+      "itemTypes": [
+        {
+          "id": 9,
+          "name": "DIMM"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Network Card",
+      "itemTypes": [
+        {
+          "id": 10,
+          "name": "CONNECTX-5"
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "name": "PCBA",
+      "itemTypes": [
+        {
+          "id": 11,
+          "name": "PCBA"
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "name": "PSU",
+      "itemTypes": [
+        {
+          "id": 12,
+          "name": "PSU"
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "name": "RM",
+      "itemTypes": [
+        {
+          "id": 13,
+          "name": "RM"
+        }
+      ]
+    }
+  ],
+  "itemTypes": [
+    {
+      "id": 1,
+      "name": "CM",
+      "category": {
+        "id": 1,
+        "name": "CM"
+      }
+    },
+    {
+      "id": 2,
+      "name": "Controller",
+      "category": {
+        "id": 2,
+        "name": "Controller"
+      }
+    },
+    {
+      "id": 3,
+      "name": "CPU",
+      "category": {
+        "id": 3,
+        "name": "CPU"
+      }
+    },
+    {
+      "id": 4,
+      "name": "Celestial Peak",
+      "category": {
+        "id": 4,
+        "name": "FPGA"
+      }
+    },
+    {
+      "id": 5,
+      "name": "NVMe",
+      "category": {
+        "id": 5,
+        "name": "Hard Drive"
+      }
+    },
+    {
+      "id": 6,
+      "name": "SAS",
+      "category": {
+        "id": 5,
+        "name": "Hard Drive"
+      }
+    },
+    {
+      "id": 7,
+      "name": "SATA",
+      "category": {
+        "id": 5,
+        "name": "Hard Drive"
+      }
+    },
+    {
+      "id": 8,
+      "name": "SSD",
+      "category": {
+        "id": 5,
+        "name": "Hard Drive"
+      }
+    },
+    {
+      "id": 9,
+      "name": "DIMM",
+      "category": {
+        "id": 6,
+        "name": "Memory Module"
+      }
+    },
+    {
+      "id": 10,
+      "name": "CONNECTX-5",
+      "category": {
+        "id": 7,
+        "name": "Network Card"
+      }
+    },
+    {
+      "id": 11,
+      "name": "PCBA",
+      "category": {
+        "id": 8,
+        "name": "PCBA"
+      }
+    },
+    {
+      "id": 12,
+      "name": "PSU",
+      "category": {
+        "id": 9,
+        "name": "PSU"
+      }
+    },
+    {
+      "id": 13,
+      "name": "RM",
+      "category": {
+        "id": 10,
+        "name": "RM"
+      }
+    }
+  ],
+  "manufacturers": [
+    {
+      "id": 1,
+      "name": "Artesyn"
+    },
+    {
+      "id": 2,
+      "name": "Broadcom"
+    },
+    {
+      "id": 3,
+      "name": "Dell"
+    },
+    {
+      "id": 4,
+      "name": "Flextronics"
+    },
+    {
+      "id": 5,
+      "name": "Intel"
+    },
+    {
+      "id": 6,
+      "name": "Lite-On"
+    },
+    {
+      "id": 7,
+      "name": "Mellanox"
+    },
+    {
+      "id": 8,
+      "name": "Micron"
+    },
+    {
+      "id": 9,
+      "name": "Microsoft"
+    },
+    {
+      "id": 10,
+      "name": "Nanya"
+    },
+    {
+      "id": 11,
+      "name": "Samsung"
+    },
+    {
+      "id": 12,
+      "name": "Seagate"
+    },
+    {
+      "id": 13,
+      "name": "SK Hynix"
+    },
+    {
+      "id": 14,
+      "name": "Toshiba"
+    },
+    {
+      "id": 15,
+      "name": "Western Digital"
+    }
+  ]
+}
