@@ -1,0 +1,12 @@
+{
+  "data": [
+    { "name": "a", "id": "0", "fieldOne": "a", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "a", "id": "0", "fieldOne": "ab", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "b", "id": "1", "fieldOne": "b", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "c", "id": "2", "fieldOne": "bc", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "d", "id": "3", "fieldOne": "c", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "e", "id": "4", "fieldOne": "b", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "a", "id": "0", "fieldOne": "c", "fieldTwo": "two", "fieldThree": "three" },
+    { "name": "f", "id": "5", "fieldOne": "a", "fieldTwo": "two", "fieldThree": "three" }
+  ]
+}
