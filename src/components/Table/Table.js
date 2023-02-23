@@ -1,5 +1,5 @@
 import { UsergroupAddOutlined } from "@ant-design/icons";
-import { Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
+import { Button, Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
 import { useState } from "react";
 import MyData from "../../Assets/data.json";
 
@@ -102,10 +102,16 @@ const CustomTable = () => {
     addingTableId();
     return {
       title: item.charAt(0).toUpperCase() + item.slice(1),
+      
       dataIndex: item,
       width: 100,
       sorter: (a, b) => a.name - b.name,
       editable: item === "tableID" ? false : true,
+      onFilter:()=>{
+        <UsergroupAddOutlined/>
+      }
+    
+    
     };
   });
 
@@ -117,11 +123,7 @@ const CustomTable = () => {
     render: (_, record) =>
       data.length >= 1 ? (
         <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.tableID)}>
-          <a
-            onClick={() => {
-              console.log(record, "record");
-            }}
-          >
+          <a>
             Delete
           </a>
         </Popconfirm>
@@ -190,6 +192,7 @@ const CustomTable = () => {
   };
   return (
     <Form form={form} component={false}>
+  
       <Table
         components={{
           body: {
@@ -202,11 +205,17 @@ const CustomTable = () => {
         columns={mergedColumns}
         rowClassName="editable-row"
         onChange={onChange}
+        onHeaderColumn={()=>{
+          
+        }}
         pagination={{
           onChange: cancel,
         }}
-         
-      />
+      
+         />
+
+       
+      
     </Form>
   );
 };
