@@ -1,13 +1,6 @@
-<<<<<<< HEAD
-import { UsergroupAddOutlined } from "@ant-design/icons";
-import { Button, Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
-import { useState } from "react";
-=======
 import { Form, Input, InputNumber, Popconfirm, Select, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
->>>>>>> 3290d7326b35755d29253dc9a14ced494db3be50
 import MyData from "../../Assets/data.json";
-import { Select, Space } from 'antd';
 
 import '../Table/table.css'
 
@@ -208,9 +201,6 @@ const CustomTable = (props) => {
     }
     setData(datam);
   };
-<<<<<<< HEAD
-  console.log(MyData, "my data aaaaaa")
-=======
 
   const setOptionsData = async () => {
     let data = Object.keys(MyData.data[0]).map((item, index) => {
@@ -223,38 +213,12 @@ const CustomTable = (props) => {
     setOptionsData();
   }, []);
 
->>>>>>> 3290d7326b35755d29253dc9a14ced494db3be50
   return (
     <Form form={form} component={false}>
-      <div className="main-div"
-    >
-    <div className="btn-div">
-    <Space wrap>
-    <Select
-      defaultValue="select column"
-      style={{
-        width: 120,
-      }}
-      onChange={handleChange}
-      options={}
-      
-    />
-   
-   
-    
-  </Space>
-  <Input placeholder="Group By"  style={{width:"30%"}}/>
-    <button className="btn" onClick={()=>{onChange()}}> Group By</button>
-    </div>
-    <div>
+  
       <h1>{title}</h1>
-<<<<<<< HEAD
-      </div>
-      <div>
+    <div style={{display:"flex", justifyContent:"center", alignItems:"center", gap:"20px"}}>
 
-      </div>
-      </div>
-=======
       <Space wrap>
         <p style={{ fontWeight: "bolder" }}>Filter:</p>
         <Select
@@ -288,8 +252,7 @@ const CustomTable = (props) => {
         placeholder={""}
         style={{ width: "30%" }}
       />
-
->>>>>>> 3290d7326b35755d29253dc9a14ced494db3be50
+</div>
       <Table
         components={{
           body: {
@@ -297,12 +260,7 @@ const CustomTable = (props) => {
           },
         }}
         bordered
-<<<<<<< HEAD
-      
-        dataSource={data}
-=======
         dataSource={fieldTwo === "" ? data : filteredData}
->>>>>>> 3290d7326b35755d29253dc9a14ced494db3be50
         columns={mergedColumns}
         rowClassName="editable-row"
         onChange={onChange}
