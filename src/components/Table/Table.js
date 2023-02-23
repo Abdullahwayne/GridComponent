@@ -1,3 +1,4 @@
+import { UsergroupAddOutlined } from "@ant-design/icons";
 import { Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
 import { useState } from "react";
 import MyData from "../../Assets/data.json";
@@ -52,6 +53,8 @@ const CustomTable = () => {
     item.tableID = i + 1
     
    })
+   
+   
   //  console.log(updatedData, "updated data")
   }
  
@@ -107,7 +110,11 @@ const handleDelete = (key, ) => {
       width: 100,
       sorter: (a, b) => a.name - b.name,
       editable: true,
+      onHeaderCell:()=>{
+       
+        <UsergroupAddOutlined/>
       
+      }
     };
     
   });
@@ -215,6 +222,7 @@ const handleDelete = (key, ) => {
           },
         }}
         bordered
+      
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"
@@ -222,6 +230,7 @@ const handleDelete = (key, ) => {
         pagination={{
           onChange: cancel,
         }}
+         
       />
     </Form>
   );
