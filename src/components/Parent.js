@@ -1,12 +1,13 @@
 import { Table } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomTable from "./Table/Table";
-import sampleData from "../Assets/SampleData.json";
+import sampleData from "../Assets/data.json";
 const Parent = () => {
-  console.log(sampleData);
   return (
     <div>
-      <CustomTable />
+      {Object.keys(sampleData).map((item, index) => {
+        return <CustomTable dataSet={sampleData[item]} title={item} />;
+      })}
     </div>
   );
 };
