@@ -1,9 +1,7 @@
-import { Form, Input, InputNumber, Popconfirm, Table, Typography } from 'antd';
-import { useState } from 'react';
- 
-const onChange = (pagination, filters, sorter, extra) => {
-  console.log('params', sorter);
-};
+import { Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
+import { useState } from "react";
+import MyData from "../../Assets/data.json";
+
 const EditableCell = ({
   editing,
   dataIndex,
@@ -14,7 +12,7 @@ const EditableCell = ({
   children,
   ...restProps
 }) => {
-  const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
+  const inputNode = inputType === "number" ? <InputNumber /> : <Input />;
   return (
     <td {...restProps}>
       {editing ? (
@@ -40,9 +38,9 @@ const EditableCell = ({
 };
 const CustomTable = () => {
   const [form] = Form.useForm();
-  const [originData, setOriginDate] = useState([])
-  const [data, setData] = useState(originData);
-  const [editingKey, setEditingKey] = useState('');
+  const [originData, setOriginDate] = useState([]);
+  const [data, setData] = useState(MyData.data);
+  const [editingKey, setEditingKey] = useState("");
   const isEditing = (record) => record.key === editingKey;
   for (let i = 0; i < 100; i++) {
     originData.push({
@@ -58,15 +56,15 @@ const CustomTable = () => {
   };
   const edit = (record) => {
     form.setFieldsValue({
-      name: '',
-      age: '',
-      address: '',
+      name: "",
+      age: "",
+      address: "",
       ...record,
     });
     setEditingKey(record.key);
   };
   const cancel = () => {
-    setEditingKey('');
+    setEditingKey("");
   };
   const save = async (key) => {
     try {
@@ -80,76 +78,26 @@ const CustomTable = () => {
           ...row,
         });
         setData(newData);
-        setEditingKey('');
+        setEditingKey("");
       } else {
         newData.push(row);
         setData(newData);
-        setEditingKey('');
+        setEditingKey("");
       }
     } catch (errInfo) {
-      console.log('Validate Failed:', errInfo);
+      console.log("Validate Failed:", errInfo);
     }
   };
-  const columns = [
-    {
-      title: 'name',
-      dataIndex: 'name',
-      width: '25%',
+  const columns = Object.keys(MyData.data[0]).map((item, index) => {
+    return {
+      title: item.charAt(0).toUpperCase() + item.slice(1),
+      dataIndex: item,
+      width: 100,
       sorter: (a, b) => a.name - b.name,
-            editable: true,
-    },
-    {
-      title: 'age',
-      dataIndex: 'age',
-      width: '15%',
-      sorter: (a, b) => a.age - b.age,
       editable: true,
-    },
-    {
-      title: 'address',
-      dataIndex: 'address',
-      sorter: (a, b) => a.address - b.address,
+    };
+  });
 
-      width: '40%',
-      editable: true,
-    },
-    {
-      title: 'operation',
-      dataIndex: 'operation',
-      render: (_, record) =>
-      originData.length >= 1 ? (
-          <Popconfirm title="Sure to delete?" onConfirm={() => handleDelete(record.key) }>
-            <a>Delete</a>
-          </Popconfirm>
-        ) : null,
-    },
-    {
-      title: 'operation',
-      dataIndex: 'operation',
-      render: (_, record) => {
-        const editable = isEditing(record);
-        return editable ? (
-          <span>
-            <Typography.Link
-              onClick={() => save(record.key)}
-              style={{
-                marginRight: 8,
-              }}
-            >
-              Save
-            </Typography.Link>
-            <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-              <a>Cancel</a>
-            </Popconfirm>
-          </span>
-        ) : (
-          <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            Edit
-          </Typography.Link>
-        );
-      },
-    },
-  ];
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;
@@ -158,13 +106,35 @@ const CustomTable = () => {
       ...col,
       onCell: (record) => ({
         record,
-        inputType: col.dataIndex === 'age' ? 'number' : 'text',
+        inputType: col.dataIndex === "age" ? "number" : "text",
         dataIndex: col.dataIndex,
         title: col.title,
         editing: isEditing(record),
       }),
     };
   });
+
+  const onChange = (pagination, filters, sorter, extra) => {
+    // console.log(sorter.field);
+    console.log(data, "<== data file");
+    let names = data.map((item, index) => {
+      return item[sorter.field];
+    });
+    let uniques = [...new Set(names)];
+    console.log(uniques, "uniques");
+    let datam = [];
+    for (let index = 0; index < uniques.length; index++) {
+      const element = uniques[index];
+      for (let indexTwo = 0; indexTwo < data.length; indexTwo++) {
+        const elementTwo = data[indexTwo];
+        if (element === elementTwo[sorter.field]) {
+          datam.push(elementTwo);
+        }
+      }
+    }
+    setData(datam);
+    console.log(datam, "<=== final data");
+  };
   return (
     <Form form={form} component={false}>
       <Table
@@ -174,7 +144,6 @@ const CustomTable = () => {
           },
         }}
         bordered
-       
         dataSource={data}
         columns={mergedColumns}
         rowClassName="editable-row"

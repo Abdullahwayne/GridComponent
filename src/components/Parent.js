@@ -1,14 +1,13 @@
-import { Table } from 'antd'
-import React from 'react'
-import CustomTable from './Table/Table'
+import { Table } from "antd";
+import React from "react";
+import CustomTable from "./Table/Table";
 
 const Parent = () => {
   return (
     <div>
-        <CustomTable/>
-
+      <CustomTable />
     </div>
-  )
-}
+  );
+};
 
-export default Parent
+export default Parent;
