@@ -2,6 +2,9 @@ import { UsergroupAddOutlined } from "@ant-design/icons";
 import { Button, Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
 import { useState } from "react";
 import MyData from "../../Assets/data.json";
+import { Select, Space } from 'antd';
+
+import '../Table/table.css'
 
 const EditableCell = ({
   editing,
@@ -37,10 +40,12 @@ const EditableCell = ({
     </td>
   );
 };
-const CustomTable = () => {
+const CustomTable = (props) => {
+  const { dataSet, title } = props;
   const [form] = Form.useForm();
   const [originData, setOriginDate] = useState([]);
-  const [data, setData] = useState(MyData.data);
+  const [data, setData] = useState(dataSet);
+  MyData.data = dataSet;
   const [editingtableID, setEditingtableID] = useState("");
   const isEditing = (record) => {
     if (record === editingtableID) return true;
@@ -101,15 +106,15 @@ const CustomTable = () => {
   const columns = Object.keys(MyData.data[0]).map((item, index) => {
     addingTableId();
     return {
-      title: item.charAt(0).toUpperCase() + item.slice(1),
-      
+      title:
+        typeof item === "object"
+          ? item.name.charAt(0).toUpperCase() + item.name.slice(1)
+          : item.charAt(0).toUpperCase()+ item.slice(1),
       dataIndex: item,
       width: 100,
       sorter: (a, b) => a.name - b.name,
       editable: item === "tableID" ? false : true,
-      onFilter:()=>{
-        <UsergroupAddOutlined/>
-      }
+     
     
     
     };
@@ -156,7 +161,9 @@ const CustomTable = () => {
       );
     },
   });
-
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
   const mergedColumns = columns.map((col) => {
     if (!col.editable) {
       return col;
@@ -176,6 +183,7 @@ const CustomTable = () => {
   const onChange = (pagination, filters, sorter, extra) => {
     let names = data.map((item, index) => {
       return item[sorter.field];
+      
     });
     let uniques = [...new Set(names)];
     let datam = [];
@@ -190,9 +198,36 @@ const CustomTable = () => {
     }
     setData(datam);
   };
+  console.log(MyData, "my data aaaaaa")
   return (
     <Form form={form} component={false}>
-  
+      <div className="main-div"
+    >
+    <div className="btn-div">
+    <Space wrap>
+    <Select
+      defaultValue="select column"
+      style={{
+        width: 120,
+      }}
+      onChange={handleChange}
+      options={}
+      
+    />
+   
+   
+    
+  </Space>
+  <Input placeholder="Group By"  style={{width:"30%"}}/>
+    <button className="btn" onClick={()=>{onChange()}}> Group By</button>
+    </div>
+    <div>
+      <h1>{title}</h1>
+      </div>
+      <div>
+
+      </div>
+      </div>
       <Table
         components={{
           body: {

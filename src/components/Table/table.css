@@ -1,0 +1,24 @@
+.main-div{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.btn{
+    background-color:#1E90FF	;
+    color: white;
+    font-family: Poppins;
+    font-weight: bold;
+    /* width: %; */
+    padding: 5px;
+    border-radius: 12px;
+    border: 1px solid #1E90FF;
+    cursor: pointer;
+
+    
+    
+}
+.btn-div{
+    width: 45%;
+    display: flex;
+    gap: 10px;
+}
