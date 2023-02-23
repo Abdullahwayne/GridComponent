@@ -1,5 +1,5 @@
-import { Form, Input, InputNumber, Popconfirm, Table, Typography } from "antd";
-import { useState } from "react";
+import { Form, Input, InputNumber, Popconfirm, Select, Space, Table, Typography } from "antd";
+import { useEffect, useState } from "react";
 import MyData from "../../Assets/data.json";
 
 const EditableCell = ({
@@ -41,6 +41,11 @@ const CustomTable = (props) => {
   const [form] = Form.useForm();
   const [originData, setOriginDate] = useState([]);
   const [data, setData] = useState(dataSet);
+  const [fieldOne, setFieldOne] = useState("name");
+  const [fieldTwo, setFeldTwo] = useState("");
+  const [filteredData, setFilteredData] = useState("");
+  const [filterOptions, setFilterOptions] = useState([]);
+
   MyData.data = dataSet;
   const [editingtableID, setEditingtableID] = useState("");
   const isEditing = (record) => {
@@ -105,7 +110,7 @@ const CustomTable = (props) => {
       title:
         typeof item === "object"
           ? item.name.charAt(0).toUpperCase() + item.name.slice(1)
-          : item.charAt(0).toUpperCase()+ item.slice(1),
+          : item.charAt(0).toUpperCase() + item.slice(1),
       dataIndex: item,
       width: 100,
       sorter: (a, b) => a.name - b.name,
@@ -192,9 +197,55 @@ const CustomTable = (props) => {
     }
     setData(datam);
   };
+
+  const setOptionsData = async () => {
+    let data = Object.keys(MyData.data[0]).map((item, index) => {
+      return { label: item, value: item };
+    });
+    setFilterOptions(data);
+  };
+
+  useEffect(() => {
+    setOptionsData();
+  }, []);
+
   return (
     <Form form={form} component={false}>
       <h1>{title}</h1>
+      <Space wrap>
+        <p style={{ fontWeight: "bolder" }}>Filter:</p>
+        <Select
+          value={fieldOne}
+          onChange={(e) => {
+            setFieldOne(e);
+          }}
+          defaultValue={""}
+          style={{
+            width: 120,
+          }}
+          options={filterOptions}
+        />
+      </Space>
+      <Input
+        value={fieldTwo}
+        onChange={(e) => {
+          console.log(e, "<===");
+          setFeldTwo(e.target.value);
+          console.log(data, "<== data");
+          let newData = [];
+          for (let index = 0; index < data.length; index++) {
+            const element = data[index];
+            if (element[fieldOne] === e.target.value) {
+              newData.push(element);
+            }
+          }
+          console.log(newData, "<=== new data");
+          setFilteredData(newData);
+        }}
+        placeholder={""}
+        style={{ width: "30%" }}
+      />
+
       <Table
         components={{
           body: {
@@ -202,7 +253,7 @@ const CustomTable = (props) => {
           },
         }}
         bordered
-        dataSource={data}
+        dataSource={fieldTwo === "" ? data : filteredData}
         columns={mergedColumns}
         rowClassName="editable-row"
         onChange={onChange}
