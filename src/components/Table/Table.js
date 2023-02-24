@@ -1,4 +1,4 @@
-import { Form, Input, InputNumber, Popconfirm, Select, Space, Table, Typography } from "antd";
+import { AutoComplete, Form, Input, InputNumber, Popconfirm, Select, Space, Table, Typography } from "antd";
 import { useEffect, useState } from "react";
 import MyData from "../../Assets/data.json";
 
@@ -14,7 +14,44 @@ const EditableCell = ({
   children,
   ...restProps
 }) => {
-  const inputNode = inputType === "number" ? <InputNumber /> : <Input />;
+  const options = [
+    {
+      value: 'Burns Bay Road',
+    },
+    {
+      value: 'Downing Street',
+    },
+    {
+      value: 'Wall Street',
+    },
+  ];
+  const inputNode = inputType === "number" ? <AutoComplete
+  
+  options={options}
+  style={{
+        width: 200,
+      }}
+>
+  <Input
+    placeholder="input here"
+    className="custom"
+    style={{
+        width: 200,
+      }}
+    
+  />
+</AutoComplete> : <AutoComplete
+options={options}
+style={{
+        width: 200,
+      }}
+    >
+      <Input
+      style={{
+        width: 200,
+      }}
+      />
+    </AutoComplete>
   return (
     <td {...restProps}>
       {editing ? (
@@ -215,6 +252,7 @@ const CustomTable = (props) => {
 
   return (
     <Form form={form} component={false}>
+    <div style={{padding:"20px"}}>
   
       <h1>{title}</h1>
     <div style={{display:"flex", justifyContent:"center", alignItems:"center", gap:"20px"}}>
@@ -274,8 +312,9 @@ const CustomTable = (props) => {
          />
 
        
-      
+</div>  
     </Form>
+    
   );
 };
 export default CustomTable;

@@ -48,7 +48,7 @@ const Parent = () => {
   }, []);
 
   return (
-    <div>
+    <div style={{padding:"15px"}}>
       <Tabs defaultActiveKey="1" onChange={onChange} items={data} />
     </div>
   );
